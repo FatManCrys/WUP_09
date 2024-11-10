@@ -58,21 +58,43 @@ Bears <- select(bears,contains("e"),-Name)
 #Clean missing values out of dataset (needed to run Anova at end of demo)
 Bears<- na.omit(Bears)
 ```
+
 # For each of the three species of fish listed below, determine the best regression model and also the best 2 element regression model. Use the BestSubset Regression helper file.
 
 
 ## Perch
-
+```{r}
+library(leaps)
+regsubsets.out <- regsubsets(Weight ~ ., data = Perch, nbest = 1, nvmax = NULL, force.in = NULL, force.out =NULL, method= "exhaustive") 
+summary.out <-summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2" ,legend= "bottom" , main = "Adjusted R^2")
+```
 ### Best Models
 
 ### Best Two regressor model
+Using leaps we were able to locus is power onto tne adjusted (Squared value. Then a woud give us only the nionest or adjusted r squared values. Using leaps we were able to focus its power onto the adjusted r-squared value. Then it would give us only the highest of adjusted r squared values for 1, 2, 3, 4 and 5 variables for pike. Using this kind of leaps & shows thal L1 and L3 are the best two regressors for the highest adjusted r-squared
+value making it the best two regressor model
 
 ## Pike
+```{r}
+library(leaps)regsubsets.out<- regsubsets(Weight~.,data=Pike, nbest = 1, nvmax = NULL, force.in = NULL, force.out = NULL,method= "exhuastive")
+summary.out
 
+
+
+
+
+```
 ### Best Models
 
 ### Best Two regressor model
-
+Using leaps we were able to focus its power onto the adjusted r-squared value.
+Then it would give us only the highest of adjusted r-squared values for 1, 2,
+3, 4 and 5 variables for pike. Using this kind of leaps it shows that L1 and
+L3 are the best two regressors for thel highest adjusted r-squared value making
+it the best two regressor model.
 ## Roach
 
 ### Best Models
