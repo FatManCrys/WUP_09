@@ -101,14 +101,14 @@ Then it would give us only the highest of adjusted  r-squared values for 1, 2,
 L3 are the best two regressors for thel highest  adjusted r-squared value making 
 it the best two regressor model. 
 ## Roach
-```{r}
+```{r} 
 library(leaps)
 regsubsets.out <- regsubsets(Weight ~ ., data = Perch, nbest = 1, nvmax = NULL, force.in = NULL, force.out =NULL, method= "exhaustive") 
 summary.out <-summary(regsubsets.out)
 as.data.frame(summary.out$outmat)
 library(car)
 subsets(regsubsets.out,statistic="adjr2" ,legend= "bottom" , main = "Adjusted R^2")
-```
+``` 
 ### Best Models
 
 ### Best Two regressor model
