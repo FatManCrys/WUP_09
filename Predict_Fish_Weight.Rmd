@@ -91,6 +91,8 @@ subsets(regsubsets.out,statistic="adjr2" ,legend= "bottom" , main = "Adjusted R^
 ```
 ### Best Models
 
+best model is 5
+
 ### Best Two regressor model
 
 Using leaps we were able to focus its power onto the adjusted r-squared value.
